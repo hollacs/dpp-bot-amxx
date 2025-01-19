@@ -1,7 +1,7 @@
 name: Library Binaries Update
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
