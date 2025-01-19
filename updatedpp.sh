@@ -30,42 +30,42 @@ fi
 echo "Process windows x64 release"
 cd "./libdpp - Windows x64-Coro-Release-vs2022" && unzip -qq ./*.zip
 # header files from first zip
-cp -rv ./*/include ../../MyBot/dependencies/
+cp -rv ./*/include ../../dppbot/dependencies/
 
 # dll files
-cp -rv ./*/bin/*.dll ../../MyBot/dependencies/64/release/bin/
+cp -rv ./*/bin/*.dll ../../dppbot/dependencies/64/release/bin/
 # lib files
-cp -rv ./*/lib ../../MyBot/dependencies/64/release/
+cp -rv ./*/lib ../../dppbot/dependencies/64/release/
 cd .. || exit
 
 echo "Process windows x64 debug"
 cd "./libdpp - Windows x64-Coro-Debug-vs2022" && unzip -qq ./*.zip
 # dll files
-cp -rv ./*/bin/*.dll ../../MyBot/dependencies/64/debug/bin/
+cp -rv ./*/bin/*.dll ../../dppbot/dependencies/64/debug/bin/
 # lib files
-cp -rv ./*/lib ../../MyBot/dependencies/64/debug/
+cp -rv ./*/lib ../../dppbot/dependencies/64/debug/
 cd .. || exit
 
 echo "Process windows x86 release"
 cd "./libdpp - Windows x86-Coro-Release-vs2022" && unzip -qq ./*.zip
 # dll files
-cp -rv ./*/bin/*.dll ../../MyBot/dependencies/32/release/bin/
+cp -rv ./*/bin/*.dll ../../dppbot/dependencies/32/release/bin/
 # lib files
-cp -rv ./*/lib ../../MyBot/dependencies/32/release/
+cp -rv ./*/lib ../../dppbot/dependencies/32/release/
 cd .. || exit
 
 echo "Process windows x86 debug"
 cd "./libdpp - Windows x86-Coro-Debug-vs2022" && unzip -qq ./*.zip
 # dll files
-cp -rv ./*/bin/*.dll ../../MyBot/dependencies/32/debug/bin/
+cp -rv ./*/bin/*.dll ../../dppbot/dependencies/32/debug/bin/
 # lib files
-cp -rv ./*/lib ../../MyBot/dependencies/32/debug/
+cp -rv ./*/lib ../../dppbot/dependencies/32/debug/
 cd .. || exit
 
 echo "Converting linefeeds from dos to unix"
 # dos2unix
 cd .. || exit
-cd MyBot/dependencies/include/dpp-10.0/dpp || exit
+cd dppbot/dependencies/include/dpp-10.0/dpp || exit
 find . -exec dos2unix {} \;
 cd ../../../../.. || exit
 find . -name '*.cmake' -exec dos2unix -q {} \;
@@ -76,6 +76,6 @@ rm -rf temp
 echo "Committing..."
 git checkout main
 git pull
-git add -A MyBot/dependencies
+git add -A dppbot/dependencies
 git commit -m "auto update to latest DPP master branch"
 git push
